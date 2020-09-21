@@ -12,5 +12,7 @@ namespace Repositories.Interfaces
 
         Task<bool> Update(Student student);
         Student Get(int search);
+
+        List<Student> GetAll();
     }
 }

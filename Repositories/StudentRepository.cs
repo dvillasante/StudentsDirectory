@@ -72,5 +72,10 @@ namespace Repositories
             
         }
 
+        public List<Student> GetAll()
+        {
+            return _studentContext.Students.ToList();
+
+        }
     }
 }

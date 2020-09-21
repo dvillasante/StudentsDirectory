@@ -123,3 +123,4 @@ C:\Users\dvillasante\source\repos\StudentsDirectory\StudentsDirectory\bin\Debug\
 C:\Users\dvillasante\source\repos\StudentsDirectory\StudentsDirectory\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\dvillasante\source\repos\StudentsDirectory\StudentsDirectory\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\dvillasante\source\repos\StudentsDirectory\StudentsDirectory\obj\Debug\netcoreapp3.1\StudentsDirectory.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dvillasante\source\repos\StudentsDirectory\StudentsDirectory\bin\Debug\netcoreapp3.1\StudentsDirectory.Views.dll

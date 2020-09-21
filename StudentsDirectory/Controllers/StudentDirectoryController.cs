@@ -70,5 +70,16 @@ namespace StudentsDirectory.Controllers
                 return BadRequest();
             }
         }
+
+        [Authorize(Roles = Role.All)]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+
+                var result = _studentManager.GetAll();
+
+                return Ok(result);
+
+        }
     }
 }

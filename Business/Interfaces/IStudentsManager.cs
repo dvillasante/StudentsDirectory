@@ -13,6 +13,7 @@ namespace Business.Interfaces
         Task<Student> Update(Student student);
 
         Student Get(int id);
+        List<Student> GetAll();
 
         void LoadTestData();
 
