@@ -11,6 +11,8 @@ namespace Repositories.Interfaces
         Task<bool> Create(Student student);
 
         Task<bool> Update(Student student);
+
+        Task<bool> Delete(int id);
         Student Get(int search);
 
         List<Student> GetAll();

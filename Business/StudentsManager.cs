@@ -74,5 +74,11 @@ namespace Business
         {
             return _repository.GetAll();
         }
+
+        public async Task<bool> Delete(int id)
+        {
+            var result = await _repository.Delete(id);
+            return result;
+        }
     }
 }

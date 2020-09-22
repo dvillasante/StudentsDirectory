@@ -23,6 +23,9 @@ namespace Repositories
 
         public async Task<bool> Create(Student student)
         {
+            student.Enabled = true;
+            student.LastUpdated = DateTime.Now.ToString();
+
             _studentContext.Students.Add(student);
 
             var result = await _studentContext.SaveChangesAsync();
@@ -74,8 +77,34 @@ namespace Repositories
 
         public List<Student> GetAll()
         {
-            return _studentContext.Students.ToList();
+            return _studentContext.Students.Where(x => x.Enabled == true).ToList();
 
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            var result = Get(id);
+            try
+            {
+                if (result != null)
+                {
+                    result.Enabled = false;
+                    result.LastUpdated = DateTime.Now.ToString();
+
+                    var resultUpdate = await _studentContext.SaveChangesAsync();
+
+                    if (resultUpdate == 1)
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+
+            return false;
         }
     }
 }

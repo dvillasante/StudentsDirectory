@@ -12,6 +12,8 @@ namespace Business.Interfaces
 
         Task<Student> Update(Student student);
 
+        Task<bool> Delete(int id);
+
         Student Get(int id);
         List<Student> GetAll();
 

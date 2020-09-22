@@ -14,6 +14,18 @@ namespace Models
         public bool Enabled { get; set; }
         
         public string LastUpdated { get; set; }
+        public Student()
+        {
+
+        }
+        public Student(int id, string firstName, string lastName, string dob, string sex)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Dob = dob;
+            Sex = sex;
+        }
 
     }
 }

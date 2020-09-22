@@ -10,7 +10,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -38,7 +38,8 @@ namespace Web.Controllers
             user.LastName = result.Result.LastName;
             user.Id = result.Result.Id;
             //return View(result);
-            return RedirectToAction("Index", "Student", user);
+            SetToken(user);
+            return RedirectToAction("Index", "Student");
         }
         public IActionResult Privacy()
         {

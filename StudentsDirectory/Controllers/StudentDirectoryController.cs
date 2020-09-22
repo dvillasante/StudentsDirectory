@@ -54,6 +54,21 @@ namespace StudentsDirectory.Controllers
                 return BadRequest();
             }
         }
+        [Authorize(Roles = Role.Admin)]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id > 0)
+            {
+                var result = await _studentManager.Delete(id);
+
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
         [Authorize(Roles = Role.All)]
         [HttpGet("{id}")]
