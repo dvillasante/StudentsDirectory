@@ -18,25 +18,31 @@ namespace Web.Controllers
         {
             _logger = logger;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Login(UserLogin userLogin)
+        public async Task<ActionResult> Login(UserLogin userLogin)
         {
             User user = new User();
             user.Username = userLogin.User;
             user.Password = userLogin.Password;
-            var result = Business.ApiClientManager.Login(user);
+            var result = await Business.ApiClientManager.Login(user);
 
-            user.Role = result.Result.Role;
-            user.Token = result.Result.Token;
-            user.FirstName= result.Result.FirstName;
-            user.LastName = result.Result.LastName;
-            user.Id = result.Result.Id;
+            if (result.Token == null)
+            {
+                TempData["Message"] = "Wrong user or password.";
+                return RedirectToAction("Index", "Home");
+            }
+            user.Role = result.Role;
+            user.Token = result.Token;
+            user.FirstName= result.FirstName;
+            user.LastName = result.LastName;
+            user.Id = result.Id;
             //return View(result);
             SetToken(user);
             return RedirectToAction("Index", "Student");

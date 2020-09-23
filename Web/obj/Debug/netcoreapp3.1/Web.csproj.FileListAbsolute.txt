@@ -142,3 +142,4 @@ C:\Users\dvillasante\source\repos\StudentsDirectory\Web\obj\Debug\netcoreapp3.1\
 C:\Users\dvillasante\source\repos\StudentsDirectory\Web\obj\Debug\netcoreapp3.1\Razor\Views\Student\Edit.cshtml.g.cs
 C:\Users\dvillasante\source\repos\StudentsDirectory\Web\obj\Debug\netcoreapp3.1\Razor\Views\Student\Details.cshtml.g.cs
 C:\Users\dvillasante\source\repos\StudentsDirectory\Web\obj\Debug\netcoreapp3.1\Razor\Views\Student\Delete.cshtml.g.cs
+C:\Users\dvillasante\source\repos\StudentsDirectory\Web\obj\Debug\netcoreapp3.1\Razor\Views\Base\HandleError.cshtml.g.cs

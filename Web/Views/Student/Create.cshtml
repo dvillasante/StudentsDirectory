@@ -38,6 +38,13 @@
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @if (@ViewBag.Message != null)
+                {
+                    <div style="border: 1px solid red">
+                        @ViewBag.Message
+                    </div>
+                    <br />
+                }
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

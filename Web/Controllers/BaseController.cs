@@ -23,6 +23,12 @@ namespace Web.Controllers
             return HttpContext.Session.GetString("Token");
         }
 
-        
+        public ActionResult HandleError(string error)
+        {
+            ViewBag.Message = error;
+            return View("~/Views/Base/HandleError.cshtml");
+        }
+
+
     }
 }

@@ -65,56 +65,57 @@ namespace Business
             return student;
         }
 
-        public static async Task<Student> Create(Student student, string token)
+        public static async Task<string> Create(Student student, string token)
         {
             Student studentCreated = new Student();
-
+            HttpResponseMessage response = null;
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(student), Encoding.UTF8, "application/json");
 
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                using (var response = await httpClient.PostAsync("http://localhost:59794/api/StudentDirectory/", content))
+                using (response = await httpClient.PostAsync("http://localhost:59794/api/StudentDirectory/", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     studentCreated = JsonConvert.DeserializeObject<Student>(apiResponse);
                 }
             }
-            return studentCreated;
+            return response.ReasonPhrase;
         }
 
-        public static async Task<Student> Edit(Student student, string token)
+        public static async Task<string> Edit(Student student, string token)
         {
             Student studentUpdated = new Student();
-
+            HttpResponseMessage response = null;
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(student), Encoding.UTF8, "application/json");
 
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                using (var response = await httpClient.PutAsync("http://localhost:59794/api/StudentDirectory/", content))
+                using (response = await httpClient.PutAsync("http://localhost:59794/api/StudentDirectory/", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     studentUpdated = JsonConvert.DeserializeObject<Student>(apiResponse);
                 }
             }
-            return studentUpdated;
+            return response.ReasonPhrase;
         }
 
-        public static async Task<bool> Delete(int id, string token)
+        public static async Task<string> Delete(int id, string token)
         {
             bool result = false;
+            HttpResponseMessage response = null;
 
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                using (var response = await httpClient.DeleteAsync("http://localhost:59794/api/StudentDirectory/" + id))
+                using (response = await httpClient.DeleteAsync("http://localhost:59794/api/StudentDirectory/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    result = JsonConvert.DeserializeObject<bool>(apiResponse);
+                    //result = JsonConvert.DeserializeObject<bool>(apiResponse);
                 }
             }
-            return result;
+            return response.ReasonPhrase;
         }
     }
 }
